@@ -3,6 +3,7 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/default)
 [![GitHub release](https://img.shields.io/github/v/release/eisi484/ha-delonghi-coffee-lounge?include_prereleases)](https://github.com/eisi484/ha-delonghi-coffee-lounge/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Donate PayPal](https://img.shields.io/badge/Donate-PayPal-0079C1.svg?logo=paypal)](https://paypal.me/eisi484)
 
 Custom integration for Home Assistant providing full real-time telemetry, status sensors, interactive controls (temperature, grind size, profile, switches), and BLE pairing for De'Longhi coffee machines connected via the **De'Longhi Coffee Lounge** app (e.g. De'Longhi Eletta Ultra ECAM472.85.MB / Eletta Explore series).
 
@@ -189,6 +190,14 @@ data:
 - **Identity Provider:** Gigya (`accounts.eu1.gigya.com`) for authenticating user credentials.
 - **Push Telemetry:** AWS IoT Core (`a2612mo23mfrw1-ats.iot.eu-central-1.amazonaws.com`) via an unsigned Custom Authorizer (`dlg-prod-token-authorizer`).
 - **Shadow Desired Updates:** Writable options publish JSON patches to `$aws/things/{MachineName}/shadow/name/MachineSettings/update` under `state.desired.Editable`.
+
+---
+
+## ☕ Support My Work
+
+If you find this integration useful and would like to support my work, feel free to buy me a coffee!
+
+[![Donate with PayPal](https://img.shields.io/badge/Buy_Me_A_Coffee-PayPal-0079C1?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/eisi484)
 
 ---
 
