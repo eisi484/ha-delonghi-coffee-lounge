@@ -3,29 +3,29 @@
     "step": {
       "user": {
         "title": "De'Longhi Coffee Lounge Anmeldung",
-        "description": "Gib die Zugangsdaten ein, die du auch in der De'Longhi Coffee Lounge App verwendest.",
+        "description": "Gib die Zugangsdaten ein, die du in der De'Longhi Coffee Lounge App verwendest.",
         "data": {
-          "email": "Email",
+          "email": "E-Mail",
           "password": "Passwort"
         }
       },
       "reauth_confirm": {
         "title": "De'Longhi Coffee Lounge Passwort erneut eingeben",
-        "description": "Dein gespeichertes Login für {email} wurde von De'Longhis Servern abgelehnt (z. B. Passwort geändert oder anderswo abgemeldet). Gib dein Passwort einmal ein, um die Verbindung wiederherzustellen.",
+        "description": "Dein gespeichertes Login für {email} wurde von De'Longhis Servern abgelehnt (z. B. Passwort geändert). Gib dein Passwort erneut ein.",
         "data": {
           "password": "Passwort"
         }
       }
     },
     "error": {
-      "auth_failed": "Anmeldung fehlgeschlagen",
-      "cannot_connect": "Verbindung zu De'Longhi-Servern nicht möglich",
-      "no_devices": "Keine Maschinen in diesem Konto gefunden",
+      "auth_failed": "Anmeldung fehlgeschlagen (E-Mail oder Passwort falsch)",
+      "cannot_connect": "Verbindung zu den De'Longhi-Servern fehlgeschlagen",
+      "no_devices": "Keine Kaffeemaschinen in diesem Konto gefunden",
       "unknown": "Unerwarteter Fehler"
     },
     "abort": {
-      "already_configured": "Dieses Konto ist bereits konfiguriert",
-      "reauth_successful": "Erneute Anmeldung erfolgreich"
+      "already_configured": "Dieses Konto ist bereits eingerichtet",
+      "reauth_successful": "Erneute Anmeldung war erfolgreich"
     }
   },
   "entity": {
@@ -37,37 +37,37 @@
         "name": "Getränkefortschritt"
       },
       "lan_ip": {
-        "name": "LAN-IP"
+        "name": "WLAN IP-Adresse"
       },
       "model": {
-        "name": "Modell"
+        "name": "Maschinenmodell"
       },
       "descale_pct": {
         "name": "Entkalkungsstand"
       },
       "grounds_pct": {
-        "name": "Kaffeesatz-Behälter"
+        "name": "Kaffeesatzbehälter-Füllstand"
       },
       "filter_pct": {
-        "name": "Wasserfilter-Stand"
+        "name": "Wasserfilter-Kapazität"
       },
       "grounds_count": {
-        "name": "Bezüge gesamt"
+        "name": "Kaffeebezüge gesamt"
       },
       "granulometry": {
         "name": "Mahlgrad"
       },
       "coffee_temp": {
-        "name": "Kaffeetemperatur-Einstellung"
+        "name": "Kaffeetemperatur-Stufe"
       },
       "water_total": {
-        "name": "Wasserpumpen-Impulse (seit Entkalkung)"
+        "name": "Wasserimpulse (seit Entkalkung)"
       },
       "water_since_descale": {
-        "name": "Gepumptes Wasser (seit Entkalkung)"
+        "name": "Wasserverbrauch (seit Entkalkung)"
       },
       "water_lifetime": {
-        "name": "Gepumptes Wasser (gesamt)"
+        "name": "Gesamter Wasserverbrauch"
       },
       "descale_count": {
         "name": "Entkalkungen gesamt"
@@ -81,10 +81,10 @@
     },
     "binary_sensor": {
       "online": {
-        "name": "Online"
+        "name": "Online-Status"
       },
       "alarm_descale": {
-        "name": "Entkalkung nötig"
+        "name": "Entkalkung erforderlich"
       },
       "alarm_tank_level": {
         "name": "Wassertank leer"
@@ -93,10 +93,10 @@
         "name": "Kaffeebohnen leer"
       },
       "alarm_waste": {
-        "name": "Kaffeesatz-Behälter leeren"
+        "name": "Kaffeesatzbehälter voll / leeren"
       },
       "alarm_filter": {
-        "name": "Wasserfilter tauschen"
+        "name": "Wasserfilter wechseln"
       },
       "alarm_ground_fine": {
         "name": "Mahlgrad zu fein"
@@ -111,37 +111,37 @@
         "name": "Reinigung erforderlich"
       },
       "alarm_drain": {
-        "name": "Abfluss-Störung"
+        "name": "Ablauf- / System-Störung"
       },
       "alarm_infuser": {
-        "name": "Infuser-Störung"
+        "name": "Brühgruppen-Störung (Infuser)"
       },
       "alarm_motor_pos": {
-        "name": "Motorposition-Störung"
+        "name": "Antriebsmotor-Fehler"
       },
       "alarm_heater_ntc": {
-        "name": "Heizungs-Temperaturfühler-Störung"
+        "name": "Thermoblock-Temperatursensor-Fehler"
       },
       "alarm_bubble": {
-        "name": "Luftblase erkannt"
+        "name": "Luft im Wassersystem"
       },
       "alarm_imbocco": {
-        "name": "Kaffeeeinlauf-Störung"
+        "name": "Kaffeepulver-Trichter verstopft"
       },
       "alarm_fan": {
         "name": "Lüfter-Störung"
       },
       "alarm_fridge": {
-        "name": "Kühlschrank-Störung"
+        "name": "Milchkühler-Störung"
       },
       "alarm_general": {
-        "name": "Allgemeiner Alarm"
+        "name": "Allgemeine Systemstörung"
       },
       "alarm_ui_memory": {
-        "name": "Display-Speicher-Störung"
+        "name": "Speicher-Störung Display"
       },
       "alarm_wifi_down": {
-        "name": "WLAN unterbrochen"
+        "name": "WLAN-Verbindung unterbrochen"
       },
       "alarm_tank_presence": {
         "name": "Wassertank fehlt"
@@ -150,7 +150,7 @@
         "name": "Wasserauslauf montiert"
       },
       "jug": {
-        "name": "Milchbehälter montiert"
+        "name": "Milchbehälter (LatteCrema) montiert"
       },
       "hot_jug": {
         "name": "LatteCrema Hot erkannt"
@@ -159,34 +159,34 @@
         "name": "Wassertank eingesetzt"
       },
       "water_tank_low": {
-        "name": "Wassertank niedrig"
+        "name": "Wassertank-Füllstand niedrig"
       },
       "drip_presence": {
         "name": "Abtropfschale eingesetzt"
       },
       "switch": {
-        "name": "Frontschalter aktiv"
+        "name": "Frontschalter / Haupttaster"
       },
       "grinder": {
-        "name": "Mahlwerk-Schalter"
+        "name": "Mahlwerk-Mikroschalter"
       },
       "brew_unit_down": {
-        "name": "Brühgruppe unten"
+        "name": "Brühgruppe in Unterposition"
       },
       "brew_unit_up": {
-        "name": "Brühgruppe oben"
+        "name": "Brühgruppe in Oberposition"
       },
       "water_accessory": {
-        "name": "Wasserzubehör montiert"
+        "name": "Heißwasserauslauf montiert"
       },
       "hot_frother": {
-        "name": "Milchaufschäumer (heiß) montiert"
+        "name": "LatteCrema Hot Schäumer montiert"
       },
       "hot_cleaning": {
-        "name": "Reinigungszubehör (heiß) montiert"
+        "name": "Reinigungsansatz (heiß) montiert"
       },
       "cold_frother": {
-        "name": "Milchaufschäumer (kalt) montiert"
+        "name": "LatteCrema Cool Schäumer montiert"
       },
       "cold_cleaning": {
         "name": "Milchbehälter in Reinigungsstellung"
@@ -203,18 +203,18 @@
         "name": "Automatische Abschaltzeit"
       },
       "water_hardness": {
-        "name": "Wasserh\u00e4rte"
+        "name": "Wasserhärte"
       },
       "grind_setting": {
         "name": "Mahlgrad"
       },
       "active_profile": {
-        "name": "Aktives Profil"
+        "name": "Aktives Benutzerprofil"
       }
     },
     "switch": {
       "sound_enable": {
-        "name": "Maschinengeräusche"
+        "name": "Tasten- & Hinweistöne"
       },
       "energy_saving_mode": {
         "name": "Energiesparmodus"
@@ -226,39 +226,39 @@
         "name": "Automatische Abschaltung"
       },
       "disable_power_on": {
-        "name": "Ferneinschalten gesperrt"
+        "name": "Remote-Einschalten gesperrt"
       },
       "filter_installed": {
-        "name": "Wasserfilter eingesetzt"
+        "name": "Wasserfilter aktiv"
       },
       "clock_24h": {
-        "name": "24-Stunden-Anzeige"
+        "name": "24-Stunden-Uhrzeit"
       },
       "external_led": {
-        "name": "Externe LED"
+        "name": "Tassenbeleuchtung / LED"
       }
     }
   },
   "services": {
     "ble_pair": {
       "name": "BLE-Pairing",
-      "description": "Koppelt eine neue oder WLAN-zurückgesetzte De'Longhi-Maschine per Bluetooth und bestätigt die Kopplung beim Account. Baut keine lokale LAN2LAN-Verbindung auf.",
+      "description": "Koppelt eine neue oder zurückgesetzte De'Longhi-Maschine per Bluetooth und bestätigt die Kopplung in deinem Account.",
       "fields": {
         "ble_mac": {
           "name": "BLE-MAC-Adresse",
-          "description": "Die Bluetooth-MAC-Adresse der Maschine, im Pairing-Modus per BLE-Scanner-App sichtbar."
+          "description": "Die Bluetooth-MAC-Adresse der Maschine (im Pairing-Modus per BLE-Scanner sichtbar)."
         },
         "pin": {
           "name": "Pairing-PIN",
-          "description": "Der 6-stellige PIN, der auf dem Display der Maschine angezeigt wird."
+          "description": "Der 6-stellige PIN vom Display der Maschine."
         },
         "ssid": {
           "name": "WLAN-Name (SSID)",
-          "description": "Netzwerkname zum Provisionieren. Leer lassen, um die WLAN-Provisionierung zu überspringen."
+          "description": "Optional: Name deines WLANs zum Verbinden der Maschine."
         },
         "password": {
           "name": "WLAN-Passwort",
-          "description": "Leer lassen, um die WLAN-Provisionierung zu überspringen."
+          "description": "Optional: Passwort deines WLANs."
         }
       }
     }
