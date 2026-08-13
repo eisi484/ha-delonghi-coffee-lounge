@@ -195,3 +195,12 @@ data:
 ## 📄 License
 
 Distributed under the [MIT License](LICENSE).
+
+---
+
+## ⚠️ Disclaimer
+
+This project is an independent open-source custom integration developed for Home Assistant and is **not affiliated with, endorsed by, or associated with De'Longhi S.p.A.** or any of its subsidiaries.
+
+"De'Longhi", "Eletta", "LatteCrema", "Coffee Lounge", and related product names or logos are trademarks or registered trademarks of De'Longhi S.p.A. All product names, trademarks, and registered trademarks used in this repository are property of their respective owners and are used solely for identification, compatibility, and educational purposes.
+
