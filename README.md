@@ -4,7 +4,7 @@
 [![GitHub release](https://img.shields.io/github/v/release/eisi484/ha-delonghi-coffee-lounge?include_prereleases)](https://github.com/eisi484/ha-delonghi-coffee-lounge/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Custom integration for Home Assistant providing full real-time telemetry, status sensors, interactive controls (temperature, grind size, profile, switches), and BLE pairing for De'Longhi coffee machines connected via the **De'Longhi Coffee Lounge** app (e.g. Eletta Explore ECAM47080).
+Custom integration for Home Assistant providing full real-time telemetry, status sensors, interactive controls (temperature, grind size, profile, switches), and BLE pairing for De'Longhi coffee machines connected via the **De'Longhi Coffee Lounge** app (e.g. De'Longhi Eletta Ultra ECAM472.85.MB / Eletta Explore series).
 
 > [!NOTE]  
 > This integration communicates directly with **AWS IoT Core** via long-lived MQTT push connections (no polling delay) and supports setting machine options using AWS IoT Shadow updates.
