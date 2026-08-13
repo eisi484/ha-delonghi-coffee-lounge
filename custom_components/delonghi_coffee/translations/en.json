@@ -1,0 +1,267 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "De'Longhi Coffee Lounge Login",
+        "description": "Enter the account credentials you use in the De'Longhi Coffee Lounge app.",
+        "data": {
+          "email": "Email",
+          "password": "Password"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-enter your De'Longhi Coffee Lounge password",
+        "description": "Your stored login for {email} was rejected by De'Longhi's servers (e.g. you changed your password or logged out elsewhere). Enter your password once to reconnect.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "auth_failed": "Authentication failed",
+      "cannot_connect": "Cannot connect to De'Longhi servers",
+      "no_devices": "No machines found on this account",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "This account is already configured",
+      "reauth_successful": "Re-authentication was successful"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status"
+      },
+      "beverage_progress": {
+        "name": "Beverage progress"
+      },
+      "lan_ip": {
+        "name": "LAN IP"
+      },
+      "model": {
+        "name": "Model"
+      },
+      "descale_pct": {
+        "name": "Descale level"
+      },
+      "grounds_pct": {
+        "name": "Grounds container level"
+      },
+      "filter_pct": {
+        "name": "Water filter level"
+      },
+      "grounds_count": {
+        "name": "Total coffees dispensed"
+      },
+      "granulometry": {
+        "name": "Grind setting"
+      },
+      "coffee_temp": {
+        "name": "Coffee temperature setting"
+      },
+      "water_total": {
+        "name": "Water pump cycles (since descale)"
+      },
+      "water_since_descale": {
+        "name": "Water pumped (since descale)"
+      },
+      "water_lifetime": {
+        "name": "Water pumped (lifetime)"
+      },
+      "descale_count": {
+        "name": "Descale cycles"
+      },
+      "filter_change_count": {
+        "name": "Filter changes"
+      },
+      "active_profile_sensor": {
+        "name": "Active user profile"
+      }
+    },
+    "binary_sensor": {
+      "online": {
+        "name": "Online"
+      },
+      "alarm_descale": {
+        "name": "Descale needed"
+      },
+      "alarm_tank_level": {
+        "name": "Water tank low"
+      },
+      "alarm_no_coffee": {
+        "name": "Coffee beans empty"
+      },
+      "alarm_waste": {
+        "name": "Empty grounds container"
+      },
+      "alarm_filter": {
+        "name": "Replace water filter"
+      },
+      "alarm_ground_fine": {
+        "name": "Grind too fine"
+      },
+      "alarm_broken_grinder": {
+        "name": "Grinder fault"
+      },
+      "alarm_brew_unit_clean": {
+        "name": "Clean brew unit"
+      },
+      "alarm_clean": {
+        "name": "Cleaning required"
+      },
+      "alarm_drain": {
+        "name": "Drain fault"
+      },
+      "alarm_infuser": {
+        "name": "Infuser fault"
+      },
+      "alarm_motor_pos": {
+        "name": "Motor position fault"
+      },
+      "alarm_heater_ntc": {
+        "name": "Heater temperature fault"
+      },
+      "alarm_bubble": {
+        "name": "Air bubble detected"
+      },
+      "alarm_imbocco": {
+        "name": "Coffee inlet fault"
+      },
+      "alarm_fan": {
+        "name": "Fan fault"
+      },
+      "alarm_fridge": {
+        "name": "Fridge fault"
+      },
+      "alarm_general": {
+        "name": "General alarm"
+      },
+      "alarm_ui_memory": {
+        "name": "Display memory fault"
+      },
+      "alarm_wifi_down": {
+        "name": "Wi-Fi down"
+      },
+      "alarm_tank_presence": {
+        "name": "Water tank missing"
+      },
+      "water_spout": {
+        "name": "Water spout attached"
+      },
+      "jug": {
+        "name": "Milk container attached"
+      },
+      "hot_jug": {
+        "name": "LatteCrema Hot detected"
+      },
+      "tank_presence": {
+        "name": "Water tank inserted"
+      },
+      "water_tank_low": {
+        "name": "Water tank low"
+      },
+      "drip_presence": {
+        "name": "Drip tray inserted"
+      },
+      "switch": {
+        "name": "Front switch active"
+      },
+      "grinder": {
+        "name": "Grinder switch"
+      },
+      "brew_unit_down": {
+        "name": "Brew unit down position"
+      },
+      "brew_unit_up": {
+        "name": "Brew unit up position"
+      },
+      "water_accessory": {
+        "name": "Water accessory attached"
+      },
+      "hot_frother": {
+        "name": "Hot milk frother attached"
+      },
+      "hot_cleaning": {
+        "name": "Hot cleaning accessory attached"
+      },
+      "cold_frother": {
+        "name": "Cold milk frother attached"
+      },
+      "cold_cleaning": {
+        "name": "Milk container in cleaning position"
+      },
+      "steam_wand": {
+        "name": "Steam wand attached"
+      }
+    },
+    "select": {
+      "coffee_temperature": {
+        "name": "Coffee temperature"
+      },
+      "auto_off_time": {
+        "name": "Auto turn-off time"
+      },
+      "water_hardness": {
+        "name": "Water hardness"
+      },
+      "grind_setting": {
+        "name": "Grind setting"
+      },
+      "active_profile": {
+        "name": "Active profile"
+      }
+    },
+    "switch": {
+      "sound_enable": {
+        "name": "Machine sound"
+      },
+      "energy_saving_mode": {
+        "name": "Energy saving mode"
+      },
+      "cup_warmer": {
+        "name": "Cup warmer"
+      },
+      "auto_shutoff": {
+        "name": "Auto shut-off"
+      },
+      "disable_power_on": {
+        "name": "Remote power-on disabled"
+      },
+      "filter_installed": {
+        "name": "Water filter installed"
+      },
+      "clock_24h": {
+        "name": "24-hour clock"
+      },
+      "external_led": {
+        "name": "External LED"
+      }
+    }
+  },
+
+  "services": {
+    "ble_pair": {
+      "name": "BLE pair",
+      "description": "Pair a new or Wi-Fi-reset De'Longhi machine over Bluetooth and confirm the pairing with your account. Does not establish the local LAN2LAN connection.",
+      "fields": {
+        "ble_mac": {
+          "name": "BLE MAC address",
+          "description": "The machine's Bluetooth MAC address, visible via a BLE scanner app while in pairing mode."
+        },
+        "pin": {
+          "name": "Pairing PIN",
+          "description": "The 6-digit PIN shown on the machine's display."
+        },
+        "ssid": {
+          "name": "Wi-Fi SSID",
+          "description": "Network name to provision. Leave empty to skip Wi-Fi provisioning."
+        },
+        "password": {
+          "name": "Wi-Fi password",
+          "description": "Leave empty to skip Wi-Fi provisioning."
+        }
+      }
+    }
+  }
+}

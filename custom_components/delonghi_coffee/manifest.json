@@ -1,0 +1,11 @@
+{
+  "domain": "delonghi_coffee",
+  "name": "De'Longhi Coffee Lounge",
+  "version": "1.0.0",
+  "codeowners": ["@eisi484"],
+  "config_flow": true,
+  "documentation": "https://github.com/eisi484/ha-delonghi-coffee-lounge",
+  "issue_tracker": "https://github.com/eisi484/ha-delonghi-coffee-lounge/issues",
+  "iot_class": "cloud_push",
+  "requirements": ["awscrt", "requests", "bleak", "bleak-retry-connector", "cryptography"]
+}

@@ -1,0 +1,40 @@
+ble_pair:
+  name: BLE-Pairing
+  description: >-
+    Koppelt eine neue oder WLAN-zurückgesetzte De'Longhi-Maschine per
+    Bluetooth: führt den Espressif-Security-1-Handshake aus, provisioniert
+    optional WLAN-Zugangsdaten, liest die Seriennummer der Maschine aus und
+    bestätigt die Kopplung beim De'Longhi-Cloud-Account. Setzt voraus, dass
+    bereits ein De'Longhi-Coffee-Lounge-Konto in dieser Integration
+    eingerichtet ist. Baut KEINE lokale LAN2LAN-Verbindung auf — der dafür
+    nötige AuthToken ist weiterhin unbekannt.
+  fields:
+    ble_mac:
+      name: BLE-MAC-Adresse
+      description: >-
+        Die Bluetooth-MAC-Adresse der Maschine (WLAN-MAC mit letztem Byte +2).
+        Im Pairing-Modus per BLE-Scanner-App sichtbar.
+      required: true
+      example: "84:1F:E8:3B:9A:96"
+      selector:
+        text:
+    pin:
+      name: Pairing-PIN
+      description: Der 6-stellige PIN, der auf dem Display der Maschine angezeigt wird.
+      required: true
+      example: "123456"
+      selector:
+        text:
+    ssid:
+      name: WLAN-Name (SSID)
+      description: >-
+        Netzwerkname, der auf die Maschine übertragen werden soll. Leer
+        lassen, um die WLAN-Provisionierung zu überspringen (z. B. bei einer
+        Maschine, die bereits verbunden ist).
+      selector:
+        text:
+    password:
+      name: WLAN-Passwort
+      description: Leer lassen, um die WLAN-Provisionierung zu überspringen.
+      selector:
+        text:

@@ -1,0 +1,127 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "De'Longhi Coffee Lounge Login",
+        "description": "Enter the account credentials you use in the De'Longhi Coffee Lounge app.",
+        "data": {
+          "email": "Email",
+          "password": "Password"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-enter your De'Longhi Coffee Lounge password",
+        "description": "Your stored login for {email} was rejected by De'Longhi's servers (e.g. you changed your password or logged out elsewhere). Enter your password once to reconnect.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "auth_failed": "Authentication failed",
+      "cannot_connect": "Cannot connect to De'Longhi servers",
+      "no_devices": "No machines found on this account",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "This account is already configured",
+      "reauth_successful": "Re-authentication was successful"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status"
+      },
+      "lan_ip": {
+        "name": "LAN IP"
+      },
+      "model": {
+        "name": "Model"
+      }
+    },
+    "binary_sensor": {
+      "online": {
+        "name": "Online"
+      },
+      "water_tank_low": {
+        "name": "Water tank low"
+      },
+      "descale_needed": {
+        "name": "Descale needed"
+      },
+      "general_alarm": {
+        "name": "Alarm"
+      },
+      "water_spout": {
+        "name": "Water spout attached"
+      },
+      "jug": {
+        "name": "Milk container attached"
+      },
+      "hot_jug": {
+        "name": "LatteCrema Hot detected"
+      },
+      "tank_presence": {
+        "name": "Water tank inserted"
+      },
+      "drip_presence": {
+        "name": "Drip tray inserted"
+      },
+      "switch": {
+        "name": "Front switch active"
+      },
+      "grinder": {
+        "name": "Grinder switch"
+      },
+      "brew_unit_down": {
+        "name": "Brew unit down position"
+      },
+      "brew_unit_up": {
+        "name": "Brew unit up position"
+      },
+      "water_accessory": {
+        "name": "Water accessory attached"
+      },
+      "hot_frother": {
+        "name": "Hot milk frother attached"
+      },
+      "hot_cleaning": {
+        "name": "Hot cleaning accessory attached"
+      },
+      "cold_frother": {
+        "name": "Cold milk frother attached"
+      },
+      "cold_cleaning": {
+        "name": "Milk container in cleaning position"
+      },
+      "steam_wand": {
+        "name": "Steam wand attached"
+      }
+    }
+  },
+  "services": {
+    "ble_pair": {
+      "name": "BLE pair",
+      "description": "Pair a new or Wi-Fi-reset De'Longhi machine over Bluetooth and confirm the pairing with your account. Does not establish the local LAN2LAN connection.",
+      "fields": {
+        "ble_mac": {
+          "name": "BLE MAC address",
+          "description": "The machine's Bluetooth MAC address, visible via a BLE scanner app while in pairing mode."
+        },
+        "pin": {
+          "name": "Pairing PIN",
+          "description": "The 6-digit PIN shown on the machine's display."
+        },
+        "ssid": {
+          "name": "Wi-Fi SSID",
+          "description": "Network name to provision. Leave empty to skip Wi-Fi provisioning."
+        },
+        "password": {
+          "name": "Wi-Fi password",
+          "description": "Leave empty to skip Wi-Fi provisioning."
+        }
+      }
+    }
+  }
+}
