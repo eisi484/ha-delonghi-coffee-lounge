@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="custom_components/delonghi_coffee/logo.png" width="180" alt="De'Longhi Coffee Lounge Integration Logo" />
+</p>
+
 # De'Longhi Coffee Lounge Integration for Home Assistant
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/default)
