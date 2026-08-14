@@ -279,12 +279,16 @@ class DeLonghiGranulometrySensor(DeLonghiPushEntity):
         self._attr_unique_id = f"{self._machine_name}_granulometry"
 
     @property
-    def native_value(self):
-        return (
+    def native_value(self) -> float | None:
+        val = (
             self._mqtt.data.get("settings", {})
             .get("NotEditable", {})
             .get("Granulometry")
         )
+        if val is None:
+            return None
+        # Internal value 7 = physical dial setting 3.5 (1-7 scale in 0.5 increments)
+        return round(val / 2.0, 1)
 
 
 class DeLonghiCoffeeTempSensor(DeLonghiPushEntity):

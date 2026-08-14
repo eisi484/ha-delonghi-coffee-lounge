@@ -207,15 +207,17 @@ class DeLonghiWaterHardnessSelect(DeLonghiSelectBase):
 # ---------------------------------------------------------------------------
 
 class DeLonghiGranulometrySelect(DeLonghiSelectBase):
-    """Grind setting: 1 (finest) to 7 (coarsest).
+    """Grind setting: dial 0.5 to 7.0 in 0.5 steps (internal value 1-14).
 
-    Options from MachineCapabilities.Granulometries (confirmed: [1,2,3,4,5,6,7]).
-    Current value from MachineSettings.NotEditable.Granulometry (or Editable
-    in some firmware pushes — we check both).
+    Internal MQTT value 7 = physical dial 3.5.
+    Current value from MachineSettings.NotEditable.Granulometry (or Editable).
     """
 
     _attr_translation_key = "grind_setting"
     _attr_icon = "mdi:coffee-outline"
+
+    # Dial values from 0.5 to 7.0 in 0.5 increments (14 steps)
+    _OPTIONS = [f"{i / 2.0:.1f}" for i in range(1, 15)]
 
     def __init__(self, mqtt_client, device_info: dict) -> None:
         super().__init__(mqtt_client, device_info)
@@ -223,27 +225,26 @@ class DeLonghiGranulometrySelect(DeLonghiSelectBase):
 
     @property
     def options(self) -> list[str]:
-        vals = self._caps().get("Granulometries", list(range(1, 8)))
-        return [str(v) for v in vals]
+        return self._OPTIONS
 
     @property
     def current_option(self) -> str | None:
         settings = self._mqtt.data.get("settings", {})
-        # The field appears in both Editable and NotEditable depending on firmware push
         val = (
             settings.get("Editable", {}).get("Granulometry")
             or settings.get("NotEditable", {}).get("Granulometry")
         )
         if val is None:
             return None
-        return str(val)
+        return f"{val / 2.0:.1f}"
 
     async def async_select_option(self, option: str) -> None:
         try:
-            val = int(option)
+            val_float = float(option)
+            internal_val = int(round(val_float * 2.0))
         except ValueError:
             return
-        await self._async_set({"Granulometry": val})
+        await self._async_set({"Granulometry": internal_val})
 
 
 # ---------------------------------------------------------------------------
