@@ -133,20 +133,33 @@ class DeLonghiAutoOffSelect(DeLonghiSelectBase):
     @property
     def options(self) -> list[str]:
         vals = self._caps().get("AutoTurnOffTimeInMinutes", [15, 30, 60, 180])
-        return [f"{v} min" for v in vals]
+        res = []
+        for v in vals:
+            if v >= 60:
+                hours = v // 60
+                res.append(f"{hours} hour" if hours == 1 else f"{hours} hours")
+            else:
+                res.append(f"{v} min")
+        return res
 
     @property
     def current_option(self) -> str | None:
         val = self._editable().get("AutoTurnOffTimeInMin")
         if val is None:
             return None
+        if val >= 60:
+            hours = val // 60
+            return f"{hours} hour" if hours == 1 else f"{hours} hours"
         return f"{val} min"
 
     async def async_select_option(self, option: str) -> None:
-        # Strip " min" suffix and convert to int
         try:
-            minutes = int(option.replace(" min", "").strip())
-        except ValueError:
+            if "hour" in option:
+                hours = int(option.split()[0])
+                minutes = hours * 60
+            else:
+                minutes = int(option.replace(" min", "").strip())
+        except (ValueError, IndexError):
             return
         await self._async_set({"AutoTurnOffTimeInMin": minutes})
 
@@ -156,7 +169,7 @@ class DeLonghiAutoOffSelect(DeLonghiSelectBase):
 # ---------------------------------------------------------------------------
 
 class DeLonghiWaterHardnessSelect(DeLonghiSelectBase):
-    """Water hardness level: 0=Very Soft, 1=Soft, 2=Medium, 3=Hard.
+    """Water hardness level: 0=Soft, 1=Medium, 2=Hard, 3=Very Hard.
 
     Options from MachineCapabilities.WaterHardness (confirmed: [0,1,2,3]).
     """
@@ -164,7 +177,7 @@ class DeLonghiWaterHardnessSelect(DeLonghiSelectBase):
     _attr_translation_key = "water_hardness"
     _attr_icon = "mdi:water-check"
 
-    _LABELS = {0: "Very Soft", 1: "Soft", 2: "Medium", 3: "Hard"}
+    _LABELS = {0: "Soft", 1: "Medium", 2: "Hard", 3: "Very Hard"}
 
     def __init__(self, mqtt_client, device_info: dict) -> None:
         super().__init__(mqtt_client, device_info)
