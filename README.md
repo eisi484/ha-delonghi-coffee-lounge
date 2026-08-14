@@ -83,17 +83,17 @@ Custom integration for Home Assistant providing full real-time telemetry, status
 |---|---|---|
 | `sensor.status` | Text | Current machine state (Standby, Initialization, BeverageDispensing, Busy, Cleaning...) |
 | `sensor.beverage_progress` | % | Active dispensing progress percentage |
-| `sensor.total_coffees_dispensed` | Count | Lifetime total coffee counter |
-| `sensor.water_pumped_since_descale` | Pulses | Water pumped since last descale |
-| `sensor.water_pumped_lifetime` | Pulses | Total lifetime water pumped |
+| `sensor.total_water_volume` | **L (Liters)** | **Calculated total water volume (lifetime), compatible with HA Water Dashboard** |
+| `sensor.grounds_container_cycles_total` | Count | Total grounds container cycle count (CoffeeGroundsCnt) |
+| `sensor.water_pump_flowmeter_pulses_total` | Pulses | Raw water pump flowmeter pulses (lifetime counter) |
+| `sensor.heater_pulses_since_descale` | Pulses | Internal heater pulses since last descale (used for descale algorithm) |
 | `sensor.descale_cycles` | Count | Completed descale cycles counter |
 | `sensor.filter_changes` | Count | Total water filter replacements counter |
-| `sensor.descale_level` | % | Remaining capacity percentage before descale |
+| `sensor.descale_level` | % | Calc counter fill level percentage before descale |
 | `sensor.grounds_container_level` | % | Capacity level of grounds container |
 | `sensor.water_filter_level` | % | Remaining filter capacity percentage |
 | `sensor.grind_setting` | 1 - 7 | Current grind setting |
 | `sensor.coffee_temperature_setting` | 0 - 2 | Current coffee temperature level |
-| `sensor.water_pump_cycles_since_descale` | Pulses | Raw water pump pulses since descale |
 | `sensor.active_user_profile` | 1 - 4 | Active user profile number |
 | `sensor.lan_ip` | IP Address | Machine IP on local Wi-Fi |
 | `sensor.model` | Text | Machine model identifier |
