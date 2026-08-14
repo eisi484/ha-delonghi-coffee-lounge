@@ -52,7 +52,7 @@
         "name": "Wasserfilter-Kapazität"
       },
       "grounds_count": {
-        "name": "Kaffeebezüge gesamt"
+        "name": "Kaffeesatz-Zyklen (gesamt)"
       },
       "granulometry": {
         "name": "Mahlgrad"
@@ -63,11 +63,8 @@
       "water_total": {
         "name": "Wasserimpulse (seit Entkalkung)"
       },
-      "water_since_descale": {
-        "name": "Wasserverbrauch (seit Entkalkung)"
-      },
       "water_lifetime": {
-        "name": "Gesamter Wasserverbrauch"
+        "name": "Gesamter Wasserverbrauch (Lebensdauer)"
       },
       "descale_count": {
         "name": "Entkalkungen gesamt"

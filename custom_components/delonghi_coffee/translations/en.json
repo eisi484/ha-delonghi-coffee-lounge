@@ -52,7 +52,7 @@
         "name": "Water filter level"
       },
       "grounds_count": {
-        "name": "Total coffees dispensed"
+        "name": "Grounds container cycles (total)"
       },
       "granulometry": {
         "name": "Grind setting"
@@ -63,11 +63,8 @@
       "water_total": {
         "name": "Water pump cycles (since descale)"
       },
-      "water_since_descale": {
-        "name": "Water pumped (since descale)"
-      },
       "water_lifetime": {
-        "name": "Water pumped (lifetime)"
+        "name": "Water pump cycles (lifetime)"
       },
       "descale_count": {
         "name": "Descale cycles"

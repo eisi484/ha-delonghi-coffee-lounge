@@ -239,11 +239,16 @@ class DeLonghiFilterPercentSensor(DeLonghiPushEntity):
 
 
 class DeLonghiCoffeeGroundsCountSensor(DeLonghiPushEntity):
-    """Total number of coffees dispensed into the grounds container.
+    """Total grounds container cycle count (CoffeeGroundsCnt).
+
+    NOTE: This is NOT the total number of beverages. CoffeeGroundsCnt counts
+    the number of grounds-deposit cycles (each double espresso = 2 units).
+    The machine does NOT expose a simple beverage counter via MQTT shadow;
+    the Statistics shadow returns notImplemented on ECAM472.85.MB.
     Source: MachineSettings.NotEditable.CoffeeGroundsCnt
     """
 
-    _attr_icon = "mdi:counter"
+    _attr_icon = "mdi:coffee-maker-outline"
     _attr_state_class = SensorStateClass.TOTAL_INCREASING
     _attr_translation_key = "grounds_count"
 
@@ -305,13 +310,14 @@ class DeLonghiCoffeeTempSensor(DeLonghiPushEntity):
 
 
 class DeLonghiWaterTotalSensor(DeLonghiPushEntity):
-    """Total water used (pulse counts, absolute lifetime counter).
+    """Water pump pulses since last descale (resets after descale cycle).
     Source: MachineSettings.NotEditable.WaterCalcQty
     The raw unit is water-pump pulses; no official litre conversion is known.
+    NOTE: Resets to 0 after each descale, so state_class is MEASUREMENT.
     """
 
-    _attr_icon = "mdi:water"
-    _attr_state_class = SensorStateClass.TOTAL_INCREASING
+    _attr_icon = "mdi:water-sync"
+    _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_translation_key = "water_total"
 
     def __init__(self, mqtt_client, device_info) -> None:
@@ -330,37 +336,13 @@ class DeLonghiWaterTotalSensor(DeLonghiPushEntity):
     def extra_state_attributes(self):
         ne = self._mqtt.data.get("settings", {}).get("NotEditable", {})
         return {
-            "water_total_qty": ne.get("WaterTotQty"),
             "milk_clean_count": ne.get("MilkCleanCnt"),
             "filter_total_count": ne.get("FilterTotCnt"),
         }
 
 
-class DeLonghiWaterSinceDescaleSensor(DeLonghiPushEntity):
-    """Water pumped since last descale (absolute pump pulses).
-    Source: MachineSettings.NotEditable.WaterCalcQty
-    Resets to 0 after a descale cycle.
-    """
-
-    _attr_icon = "mdi:water-sync"
-    _attr_state_class = SensorStateClass.TOTAL_INCREASING
-    _attr_translation_key = "water_since_descale"
-
-    def __init__(self, mqtt_client, device_info) -> None:
-        super().__init__(mqtt_client, device_info)
-        self._attr_unique_id = f"{self._machine_name}_water_since_descale"
-
-    @property
-    def native_value(self):
-        return (
-            self._mqtt.data.get("settings", {})
-            .get("NotEditable", {})
-            .get("WaterCalcQty")
-        )
-
-
 class DeLonghiWaterLifetimeSensor(DeLonghiPushEntity):
-    """Total water pumped over machine lifetime (absolute pump pulses).
+    """Total water pumped over machine lifetime (absolute pump pulses, never resets).
     Source: MachineSettings.NotEditable.WaterTotQty
     """
 
@@ -471,7 +453,6 @@ async def async_setup_entry(
             DeLonghiFilterPercentSensor(mqtt_client, device_info),
             # Counters (MachineSettings.NotEditable)
             DeLonghiCoffeeGroundsCountSensor(mqtt_client, device_info),
-            DeLonghiWaterSinceDescaleSensor(mqtt_client, device_info),
             DeLonghiWaterLifetimeSensor(mqtt_client, device_info),
             DeLonghiDescaleCountSensor(mqtt_client, device_info),
             DeLonghiFilterChangeCountSensor(mqtt_client, device_info),
