@@ -61,10 +61,13 @@
         "name": "Coffee temperature setting"
       },
       "water_total": {
-        "name": "Water pump cycles (since descale)"
+        "name": "Heater pulses (since descale)"
       },
       "water_lifetime": {
-        "name": "Water pump cycles (lifetime)"
+        "name": "Water pump flowmeter pulses (total)"
+      },
+      "water_volume_liters": {
+        "name": "Total water volume"
       },
       "descale_count": {
         "name": "Descale cycles"

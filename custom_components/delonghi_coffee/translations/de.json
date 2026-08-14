@@ -61,10 +61,13 @@
         "name": "Kaffeetemperatur-Stufe"
       },
       "water_total": {
-        "name": "Wasserimpulse (seit Entkalkung)"
+        "name": "Heizimpulse Entkalkungszähler (seit Entkalkung)"
       },
       "water_lifetime": {
-        "name": "Gesamter Wasserverbrauch (Lebensdauer)"
+        "name": "Flowmeter-Impulse Wasserpumpe (gesamt)"
+      },
+      "water_volume_liters": {
+        "name": "Gesamter Wasserverbrauch"
       },
       "descale_count": {
         "name": "Entkalkungen gesamt"

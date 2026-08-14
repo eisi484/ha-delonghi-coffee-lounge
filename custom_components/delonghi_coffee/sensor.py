@@ -309,14 +309,13 @@ class DeLonghiCoffeeTempSensor(DeLonghiPushEntity):
         )
 
 
-class DeLonghiWaterTotalSensor(DeLonghiPushEntity):
-    """Water pump pulses since last descale (resets after descale cycle).
-    Source: MachineSettings.NotEditable.WaterCalcQty
-    The raw unit is water-pump pulses; no official litre conversion is known.
-    NOTE: Resets to 0 after each descale, so state_class is MEASUREMENT.
+class DeLonghiHeaterPulsesSensor(DeLonghiPushEntity):
+    """Internal heater pulses since last descale (used by machine for descale calculation).
+    Source: MachineSettings.NotEditable.WaterCalcQty (RelHeaterWaterPulseCnt)
+    NOTE: Resets to 0 after each descale cycle.
     """
 
-    _attr_icon = "mdi:water-sync"
+    _attr_icon = "mdi:pulse"
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_translation_key = "water_total"
 
@@ -341,12 +340,12 @@ class DeLonghiWaterTotalSensor(DeLonghiPushEntity):
         }
 
 
-class DeLonghiWaterLifetimeSensor(DeLonghiPushEntity):
-    """Total water pumped over machine lifetime (absolute pump pulses, never resets).
+class DeLonghiFlowmeterPulsesSensor(DeLonghiPushEntity):
+    """Raw water pump flowmeter pulses over machine lifetime.
     Source: MachineSettings.NotEditable.WaterTotQty
     """
 
-    _attr_icon = "mdi:water"
+    _attr_icon = "mdi:counter"
     _attr_state_class = SensorStateClass.TOTAL_INCREASING
     _attr_translation_key = "water_lifetime"
 
@@ -361,6 +360,35 @@ class DeLonghiWaterLifetimeSensor(DeLonghiPushEntity):
             .get("NotEditable", {})
             .get("WaterTotQty")
         )
+
+
+class DeLonghiWaterVolumeLitersSensor(DeLonghiPushEntity):
+    """Calculated total water volume in Litres over machine lifetime.
+    Source: MachineSettings.NotEditable.WaterTotQty / 2500 (standard De'Longhi flowmeter calibration).
+    Compatible with Home Assistant Energy/Water Dashboard!
+    """
+
+    _attr_icon = "mdi:water"
+    _attr_device_class = SensorDeviceClass.WATER
+    _attr_native_unit_of_measurement = UnitOfVolume.LITERS
+    _attr_state_class = SensorStateClass.TOTAL_INCREASING
+    _attr_translation_key = "water_volume_liters"
+
+    def __init__(self, mqtt_client, device_info) -> None:
+        super().__init__(mqtt_client, device_info)
+        self._attr_unique_id = f"{self._machine_name}_water_volume_liters"
+
+    @property
+    def native_value(self) -> float | None:
+        pulses = (
+            self._mqtt.data.get("settings", {})
+            .get("NotEditable", {})
+            .get("WaterTotQty")
+        )
+        if pulses is None:
+            return None
+        # Convert flowmeter pulses to Litres (~2500 pulses per Litre)
+        return round(pulses / 2500.0, 1)
 
 
 class DeLonghiDescaleCountSensor(DeLonghiPushEntity):
@@ -453,13 +481,14 @@ async def async_setup_entry(
             DeLonghiFilterPercentSensor(mqtt_client, device_info),
             # Counters (MachineSettings.NotEditable)
             DeLonghiCoffeeGroundsCountSensor(mqtt_client, device_info),
-            DeLonghiWaterLifetimeSensor(mqtt_client, device_info),
+            DeLonghiFlowmeterPulsesSensor(mqtt_client, device_info),
+            DeLonghiWaterVolumeLitersSensor(mqtt_client, device_info),
+            DeLonghiHeaterPulsesSensor(mqtt_client, device_info),
             DeLonghiDescaleCountSensor(mqtt_client, device_info),
             DeLonghiFilterChangeCountSensor(mqtt_client, device_info),
             # Settings read-only (also controlled via select/switch entities)
             DeLonghiGranulometrySensor(mqtt_client, device_info),
             DeLonghiCoffeeTempSensor(mqtt_client, device_info),
-            DeLonghiWaterTotalSensor(mqtt_client, device_info),
             DeLonghiActiveProfileSensor(mqtt_client, device_info),
         ]
     )
